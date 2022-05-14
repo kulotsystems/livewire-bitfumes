@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use Livewire\Component;
 
 class Comments extends Component
@@ -13,6 +14,19 @@ class Comments extends Component
             'creator'    => 'kulotsystems'
         ]
     ];
+    public $newComment;
+
+
+    public function addComment()
+    {
+        array_unshift($this->comments, [
+            'body'       => $this->newComment,
+            'created_at' => Carbon::now()->diffForHumans(),
+            'creator'    => 'kulotsystems'
+        ]);
+
+        $this->newComment = '';
+    }
 
 
     public function render()
