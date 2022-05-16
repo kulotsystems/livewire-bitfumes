@@ -20,7 +20,7 @@ class Comments extends Component
     public function addComment()
     {
         $this->validate([
-            'newComment' => 'required'
+            'newComment' => 'required|max:255'
         ]);
 
         $newComment = Comment::create([
@@ -31,6 +31,14 @@ class Comments extends Component
         $this->comments->prepend($newComment);
 
         $this->newComment = '';
+    }
+
+
+    public function updated($field)
+    {
+        $this->validateOnly($field, [
+            'newComment' => 'required|max:255'
+        ]);
     }
 
 
