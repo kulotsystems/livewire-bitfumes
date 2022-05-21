@@ -31,6 +31,8 @@ class Comments extends Component
         $this->comments->prepend($newComment);
 
         $this->newComment = '';
+
+        session()->flash('message', 'Comment added successfully.');
     }
 
 
@@ -41,6 +43,8 @@ class Comments extends Component
         $comment->delete();
 
         $this->comments = $this->comments->except($commentId);
+
+        session()->flash('message', 'Comment deleted successfully.');
     }
 
 
