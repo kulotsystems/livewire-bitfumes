@@ -34,6 +34,16 @@ class Comments extends Component
     }
 
 
+    public function removeComment($commentId)
+    {
+        $comment = Comment::find($commentId);
+
+        $comment->delete();
+
+        $this->comments = $this->comments->except($commentId);
+    }
+
+
     public function updated($field)
     {
         $this->validateOnly($field, [
