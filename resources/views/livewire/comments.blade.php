@@ -10,6 +10,9 @@
             @endif
         </div>
         <section>
+            @if($image)
+                <img src="{{ $image }}" width="200" alt="Comment Image">
+            @endif
             <input type="file" id="image" wire:change="$emit('fileChosen')">
         </section>
         <form class="my-4 flex" wire:submit.prevent="addComment">
@@ -46,6 +49,12 @@
 
 <script>
     window.livewire.on('fileChosen', () => {
-        alert('fileChosen!');
+        let inputField = document.getElementById('image');
+        let file       = inputField.files[0];
+        let reader     = new FileReader();
+        reader.onloadend = () => {
+            window.livewire.emit('fileUpload', reader.result);
+        };
+        reader.readAsDataURL(file);
     });
 </script>
