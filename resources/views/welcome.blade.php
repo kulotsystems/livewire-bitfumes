@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}"/>
     <script src="{{ asset('tailwindcss/3.0.24.js') }}"></script>
     <livewire:styles/>
+    <livewire:scripts/>
     <title>Livewire</title>
 </head>
 <body>
     <livewire:comments/>
-    <livewire:scripts/>
 </body>
 </html>
