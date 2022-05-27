@@ -9,6 +9,10 @@
             </div>
             @endif
         </div>
+        <section>
+            {{ $image }}
+            <input type="file" id="image" wire:model="image">
+        </section>
         <form class="my-4 flex" wire:submit.prevent="addComment">
             <input
                 wire:model.debounce.500ms="newComment"
