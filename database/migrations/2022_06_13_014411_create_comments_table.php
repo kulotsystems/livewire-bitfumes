@@ -14,11 +14,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
+            $table->integerIncrements('id');
             $table->text('body');
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('support_ticket_id');
             $table->timestamps();
+
+            $table
+                ->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table
+                ->foreign('support_ticket_id')
+                ->references('id')
+                ->on('support_tickets')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

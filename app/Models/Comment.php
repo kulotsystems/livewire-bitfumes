@@ -13,7 +13,8 @@ class Comment extends Model
     protected $fillable = [
         'body',
         'image',
-        'user_id'
+        'user_id',
+        'support_ticket_id'
     ];
 
     public function user()

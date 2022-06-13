@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\SupportTicket;
 use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
@@ -23,9 +24,12 @@ class DatabaseSeeder extends Seeder
              'email'  => 'test@kulotsystems.tech',
          ]);
 
+         SupportTicket::factory(3)->create();
+
         Comment::factory()->create([
             'body'    => 'This is first comment',
             'user_id' => 1,
+            'support_ticket_id' => 1
         ]);
     }
 }
