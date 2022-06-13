@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Login;
+use App\Http\Livewire\Register;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,6 @@ use App\Http\Livewire\Login;
 |
 */
 
-Route::get('/'     , Home::class);
-Route::get('/login', Login::class);
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/'        , Home::class);
+Route::get('/login'   , Login::class);
+Route::get('/register', Register::class);
